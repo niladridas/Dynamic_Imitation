@@ -6,8 +6,8 @@
  */
 
 
-#ifndef LOAD_F_DATA_HPP_
-#define LOAD_F_DATA_HPP_
+#ifndef LOAD_F_DATA_H_
+#define LOAD_F_DATA_H_
 
 #include </usr/include/eigen3/Eigen/Core>
 

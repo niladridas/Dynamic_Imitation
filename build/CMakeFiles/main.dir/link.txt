@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/load_f_data.cpp.o CMakeFiles/main.dir/f_estimate.cpp.o CMakeFiles/main.dir/gaussPdf.cpp.o  -o main -rdynamic 

@@ -96,48 +96,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named f_cap
+# Target rules for targets named main
 
 # Build rule for target.
-f_cap: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 f_cap
-.PHONY : f_cap
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-f_cap/fast:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/build
-.PHONY : f_cap/fast
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
-f_cap.o: f_cap.cpp.o
-.PHONY : f_cap.o
+f_estimate.o: f_estimate.cpp.o
+.PHONY : f_estimate.o
 
 # target to build an object file
-f_cap.cpp.o:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/f_cap.cpp.o
-.PHONY : f_cap.cpp.o
+f_estimate.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/f_estimate.cpp.o
+.PHONY : f_estimate.cpp.o
 
-f_cap.i: f_cap.cpp.i
-.PHONY : f_cap.i
+f_estimate.i: f_estimate.cpp.i
+.PHONY : f_estimate.i
 
 # target to preprocess a source file
-f_cap.cpp.i:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/f_cap.cpp.i
-.PHONY : f_cap.cpp.i
+f_estimate.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/f_estimate.cpp.i
+.PHONY : f_estimate.cpp.i
 
-f_cap.s: f_cap.cpp.s
-.PHONY : f_cap.s
+f_estimate.s: f_estimate.cpp.s
+.PHONY : f_estimate.s
 
 # target to generate assembly for a file
-f_cap.cpp.s:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/f_cap.cpp.s
-.PHONY : f_cap.cpp.s
+f_estimate.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/f_estimate.cpp.s
+.PHONY : f_estimate.cpp.s
+
+gaussPdf.o: gaussPdf.cpp.o
+.PHONY : gaussPdf.o
+
+# target to build an object file
+gaussPdf.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gaussPdf.cpp.o
+.PHONY : gaussPdf.cpp.o
+
+gaussPdf.i: gaussPdf.cpp.i
+.PHONY : gaussPdf.i
+
+# target to preprocess a source file
+gaussPdf.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gaussPdf.cpp.i
+.PHONY : gaussPdf.cpp.i
+
+gaussPdf.s: gaussPdf.cpp.s
+.PHONY : gaussPdf.s
+
+# target to generate assembly for a file
+gaussPdf.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gaussPdf.cpp.s
+.PHONY : gaussPdf.cpp.s
 
 load_f_data.o: load_f_data.cpp.o
 .PHONY : load_f_data.o
 
 # target to build an object file
 load_f_data.cpp.o:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/load_f_data.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/load_f_data.cpp.o
 .PHONY : load_f_data.cpp.o
 
 load_f_data.i: load_f_data.cpp.i
@@ -145,7 +169,7 @@ load_f_data.i: load_f_data.cpp.i
 
 # target to preprocess a source file
 load_f_data.cpp.i:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/load_f_data.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/load_f_data.cpp.i
 .PHONY : load_f_data.cpp.i
 
 load_f_data.s: load_f_data.cpp.s
@@ -153,8 +177,32 @@ load_f_data.s: load_f_data.cpp.s
 
 # target to generate assembly for a file
 load_f_data.cpp.s:
-	$(MAKE) -f CMakeFiles/f_cap.dir/build.make CMakeFiles/f_cap.dir/load_f_data.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/load_f_data.cpp.s
 .PHONY : load_f_data.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -163,14 +211,20 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... f_cap"
+	@echo "... main"
 	@echo "... rebuild_cache"
-	@echo "... f_cap.o"
-	@echo "... f_cap.i"
-	@echo "... f_cap.s"
+	@echo "... f_estimate.o"
+	@echo "... f_estimate.i"
+	@echo "... f_estimate.s"
+	@echo "... gaussPdf.o"
+	@echo "... gaussPdf.i"
+	@echo "... gaussPdf.s"
 	@echo "... load_f_data.o"
 	@echo "... load_f_data.i"
 	@echo "... load_f_data.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

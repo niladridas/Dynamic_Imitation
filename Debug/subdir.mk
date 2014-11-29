@@ -4,16 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../f_cap.cpp \
-../load_f_data.cpp 
+../function_estimate.cpp \
+../load_f_data.cpp \
+../main.cpp 
 
 OBJS += \
-./f_cap.o \
-./load_f_data.o 
+./function_estimate.o \
+./load_f_data.o \
+./main.o 
 
 CPP_DEPS += \
-./f_cap.d \
-./load_f_data.d 
+./function_estimate.d \
+./load_f_data.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
