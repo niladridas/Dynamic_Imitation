@@ -16,7 +16,7 @@
 
 using namespace Eigen;
 
-long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors)
+long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors, const VectorXf Xi_star)
 {
 
 
@@ -32,6 +32,8 @@ long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf
 //    sigma = Sigma.block(0,0,2,2);
 
 //    long double a = gausspdf(input, mean,sigma);
+
+
 
 	MatrixXf input_mean_matrix(2, 6); //   input  position(xi) mean vector for 6 gaussians
 	MatrixXf out_mean_matrix(2, 6); //   input velocity(xi dot) mean vector for 6 gaussians

@@ -21,6 +21,10 @@ public:
   Eigen::VectorXf priors_tmp;/*!< an Eigen Vector value */
   Eigen::MatrixXf mean_tmp;/*!< an Eigen Matrix value */
   Eigen::MatrixXf sigma_tmp;/*!< an Eigen Matrix value */
+  Eigen::VectorXf xistar_tmp;
+  Eigen::VectorXi sys_config;/*!<System Configuration File*/
+  // This file contains :
+  // 1. Input+output Dimension  2. Number of Gaussians 3.
 
 public:
 
@@ -28,12 +32,17 @@ public:
   /*!
   A more elaborate description of the constructor.
   */
+  void read_sysconfig();
 
   void read_priors(); //!< a member function.
 
   void read_means(); //!< a member function.
 
   void read_sigma(); //!< a member function.
+
+  void read_xistar();
+
+
 
   //! A destructor.
  /*!

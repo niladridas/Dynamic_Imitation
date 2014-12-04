@@ -12,7 +12,7 @@
 
 using namespace Eigen;
 
-long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors);
+long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors, const VectorXf Xi_star);
 
 
 #endif /* F_ESTIMATE_H_ */

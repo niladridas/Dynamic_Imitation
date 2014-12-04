@@ -18,19 +18,40 @@ using namespace Eigen;
 using namespace std;
 
 int main() {
+
+
+
 	/*
 	 * First initiate the class
 	 */
 	load_function_data load_obj;
 
-	VectorXf Priors(6);
+	VectorXi Config(2); // always two arguments
+	Config = load_obj.sys_config;
+
+
+	VectorXf Priors(Config(1));
 	Priors = load_obj.priors_tmp; /*!< an Eigen Vector value */
 
-	MatrixXf Mean(6, 4);
+
+
+	MatrixXf Mean(Config(0), Config(1));
 	Mean = load_obj.mean_tmp;
 
-	MatrixXf Sigma(24, 4);
+
+
+	MatrixXf Sigma(Config(1)*Config(0), Config(0));
 	Sigma = load_obj.sigma_tmp;
+
+	cout << "hi haha " << Sigma << endl;
+
+	VectorXf Xistar(Config(0)/2);
+	Xistar = load_obj.xistar_tmp; /*!< an Eigen Vector value */
+
+
+
+
+
 
 	//read input data from a text file
 	MatrixXf input_output_array;
@@ -57,7 +78,7 @@ int main() {
 		VectorXf input(2);
 		input(0) = input_array(i,0);
 		input(1) = input_array(i,1);
-		long double *a = f_estimate(input, Mean, Sigma, Priors);
+		long double *a = f_estimate(input, Mean, Sigma, Priors, Xistar);
 		output_array(i,0) = a[0];
 		output_array(i,1) = a[1];
 
