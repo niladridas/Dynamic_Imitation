@@ -9,6 +9,10 @@
 #define CONTROL_INPUT_H_
 
 
+#include </usr/include/eigen3/Eigen/Core>
 
+using namespace Eigen;
+
+Eigen::VectorXf control_input(Eigen::VectorXf input,Eigen::VectorXf Grad_V,Eigen::VectorXf xi_star, Eigen::VectorXf f_estimate,float rho_0, float K);
 
 #endif /* CONTROL_INPUT_H_ */

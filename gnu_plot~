@@ -1,0 +1,12 @@
+#set datafile separator ","
+set xrange [-1.5:1]
+set yrange [-1.5:0.5]
+# only integer x-cordinates
+#set samples 11
+# only integer y-cordinates
+#set isosamples 11
+# we need data, so we use the special filename "++", which
+# produces x,y-pairs
+plot "estimated_output.txt" using 1:2:3:4 with vectors
+pause -1 "Hit any key to continue"
+

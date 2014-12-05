@@ -138,12 +138,60 @@ CMakeFiles/main.dir/gaussPdf.cpp.o.provides: CMakeFiles/main.dir/gaussPdf.cpp.o.
 
 CMakeFiles/main.dir/gaussPdf.cpp.o.provides.build: CMakeFiles/main.dir/gaussPdf.cpp.o
 
+CMakeFiles/main.dir/gradient_V.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/gradient_V.cpp.o: ../gradient_V.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/niladriisl/eclipse_workspace/Dynamic_Imitation/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/gradient_V.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/gradient_V.cpp.o -c /home/niladriisl/eclipse_workspace/Dynamic_Imitation/gradient_V.cpp
+
+CMakeFiles/main.dir/gradient_V.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/gradient_V.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/niladriisl/eclipse_workspace/Dynamic_Imitation/gradient_V.cpp > CMakeFiles/main.dir/gradient_V.cpp.i
+
+CMakeFiles/main.dir/gradient_V.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/gradient_V.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/niladriisl/eclipse_workspace/Dynamic_Imitation/gradient_V.cpp -o CMakeFiles/main.dir/gradient_V.cpp.s
+
+CMakeFiles/main.dir/gradient_V.cpp.o.requires:
+.PHONY : CMakeFiles/main.dir/gradient_V.cpp.o.requires
+
+CMakeFiles/main.dir/gradient_V.cpp.o.provides: CMakeFiles/main.dir/gradient_V.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gradient_V.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/gradient_V.cpp.o.provides
+
+CMakeFiles/main.dir/gradient_V.cpp.o.provides.build: CMakeFiles/main.dir/gradient_V.cpp.o
+
+CMakeFiles/main.dir/control_input.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/control_input.cpp.o: ../control_input.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/niladriisl/eclipse_workspace/Dynamic_Imitation/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/control_input.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/control_input.cpp.o -c /home/niladriisl/eclipse_workspace/Dynamic_Imitation/control_input.cpp
+
+CMakeFiles/main.dir/control_input.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/control_input.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/niladriisl/eclipse_workspace/Dynamic_Imitation/control_input.cpp > CMakeFiles/main.dir/control_input.cpp.i
+
+CMakeFiles/main.dir/control_input.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/control_input.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/niladriisl/eclipse_workspace/Dynamic_Imitation/control_input.cpp -o CMakeFiles/main.dir/control_input.cpp.s
+
+CMakeFiles/main.dir/control_input.cpp.o.requires:
+.PHONY : CMakeFiles/main.dir/control_input.cpp.o.requires
+
+CMakeFiles/main.dir/control_input.cpp.o.provides: CMakeFiles/main.dir/control_input.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/control_input.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/control_input.cpp.o.provides
+
+CMakeFiles/main.dir/control_input.cpp.o.provides.build: CMakeFiles/main.dir/control_input.cpp.o
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/main.cpp.o" \
 "CMakeFiles/main.dir/load_f_data.cpp.o" \
 "CMakeFiles/main.dir/f_estimate.cpp.o" \
-"CMakeFiles/main.dir/gaussPdf.cpp.o"
+"CMakeFiles/main.dir/gaussPdf.cpp.o" \
+"CMakeFiles/main.dir/gradient_V.cpp.o" \
+"CMakeFiles/main.dir/control_input.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -152,6 +200,10 @@ main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/load_f_data.cpp.o
 main: CMakeFiles/main.dir/f_estimate.cpp.o
 main: CMakeFiles/main.dir/gaussPdf.cpp.o
+main: CMakeFiles/main.dir/gradient_V.cpp.o
+main: CMakeFiles/main.dir/control_input.cpp.o
+main: /usr/lib/libboost_system-mt.so
+main: /usr/lib/libboost_filesystem-mt.so
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable main"
@@ -165,6 +217,8 @@ CMakeFiles/main.dir/requires: CMakeFiles/main.dir/main.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/load_f_data.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/f_estimate.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/gaussPdf.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/gradient_V.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/control_input.cpp.o.requires
 .PHONY : CMakeFiles/main.dir/requires
 
 CMakeFiles/main.dir/clean:

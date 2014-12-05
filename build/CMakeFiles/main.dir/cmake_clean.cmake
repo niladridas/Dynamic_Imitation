@@ -3,6 +3,8 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/main.dir/load_f_data.cpp.o"
   "CMakeFiles/main.dir/f_estimate.cpp.o"
   "CMakeFiles/main.dir/gaussPdf.cpp.o"
+  "CMakeFiles/main.dir/gradient_V.cpp.o"
+  "CMakeFiles/main.dir/control_input.cpp.o"
   "main.pdb"
   "main"
 )

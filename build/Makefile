@@ -108,6 +108,30 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+control_input.o: control_input.cpp.o
+.PHONY : control_input.o
+
+# target to build an object file
+control_input.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/control_input.cpp.o
+.PHONY : control_input.cpp.o
+
+control_input.i: control_input.cpp.i
+.PHONY : control_input.i
+
+# target to preprocess a source file
+control_input.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/control_input.cpp.i
+.PHONY : control_input.cpp.i
+
+control_input.s: control_input.cpp.s
+.PHONY : control_input.s
+
+# target to generate assembly for a file
+control_input.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/control_input.cpp.s
+.PHONY : control_input.cpp.s
+
 f_estimate.o: f_estimate.cpp.o
 .PHONY : f_estimate.o
 
@@ -155,6 +179,30 @@ gaussPdf.s: gaussPdf.cpp.s
 gaussPdf.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gaussPdf.cpp.s
 .PHONY : gaussPdf.cpp.s
+
+gradient_V.o: gradient_V.cpp.o
+.PHONY : gradient_V.o
+
+# target to build an object file
+gradient_V.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gradient_V.cpp.o
+.PHONY : gradient_V.cpp.o
+
+gradient_V.i: gradient_V.cpp.i
+.PHONY : gradient_V.i
+
+# target to preprocess a source file
+gradient_V.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gradient_V.cpp.i
+.PHONY : gradient_V.cpp.i
+
+gradient_V.s: gradient_V.cpp.s
+.PHONY : gradient_V.s
+
+# target to generate assembly for a file
+gradient_V.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/gradient_V.cpp.s
+.PHONY : gradient_V.cpp.s
 
 load_f_data.o: load_f_data.cpp.o
 .PHONY : load_f_data.o
@@ -213,12 +261,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... main"
 	@echo "... rebuild_cache"
+	@echo "... control_input.o"
+	@echo "... control_input.i"
+	@echo "... control_input.s"
 	@echo "... f_estimate.o"
 	@echo "... f_estimate.i"
 	@echo "... f_estimate.s"
 	@echo "... gaussPdf.o"
 	@echo "... gaussPdf.i"
 	@echo "... gaussPdf.s"
+	@echo "... gradient_V.o"
+	@echo "... gradient_V.i"
+	@echo "... gradient_V.s"
 	@echo "... load_f_data.o"
 	@echo "... load_f_data.i"
 	@echo "... load_f_data.s"
