@@ -1,1 +1,1 @@
-/usr/bin/c++       CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/load_f_data.cpp.o CMakeFiles/main.dir/f_estimate.cpp.o CMakeFiles/main.dir/gaussPdf.cpp.o CMakeFiles/main.dir/gradient_V.cpp.o CMakeFiles/main.dir/control_input.cpp.o  -o main -rdynamic -lboost_system-mt -lboost_filesystem-mt 
+/usr/bin/c++       CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/load_f_data.cpp.o CMakeFiles/main.dir/f_estimate.cpp.o CMakeFiles/main.dir/gaussPdf.cpp.o CMakeFiles/main.dir/gradient_V.cpp.o CMakeFiles/main.dir/control_input.cpp.o  -o main -rdynamic 

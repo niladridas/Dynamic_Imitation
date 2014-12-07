@@ -202,8 +202,6 @@ main: CMakeFiles/main.dir/f_estimate.cpp.o
 main: CMakeFiles/main.dir/gaussPdf.cpp.o
 main: CMakeFiles/main.dir/gradient_V.cpp.o
 main: CMakeFiles/main.dir/control_input.cpp.o
-main: /usr/lib/libboost_system-mt.so
-main: /usr/lib/libboost_filesystem-mt.so
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable main"

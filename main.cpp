@@ -18,13 +18,6 @@
 using namespace Eigen;
 using namespace std;
 
-
-//#include <vector>
-//#include <cmath>
-//#include <boost/tuple/tuple.hpp>
-
-//#include "/home/niladriisl/eclipse_workspace/gnuplot-iostream/gnuplot-iostream.h"
-
 int main() {
 
 
@@ -44,7 +37,6 @@ int main() {
 	Xistar = load_obj.xistar_tmp; /*!< an Eigen Vector value */
 	int size_input = Xistar.rows();
 
-//	cout << "hi haha " << Sigma << endl;
 
 	//read input data from a text file
 	MatrixXf input_output_array;

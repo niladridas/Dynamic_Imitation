@@ -18,7 +18,7 @@ gradient_V::gradient_V() :
 				Eigen::MatrixXf()), Mu(Eigen::VectorXf()) {
 
 	lyapunov_config();
-	cout << "hi haha " <<endl;
+//	cout << "hi haha " <<endl;
 
 
 	P_0(); //!< a member function.
