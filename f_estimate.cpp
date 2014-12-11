@@ -37,8 +37,9 @@ using namespace Eigen;
 	MatrixXf B_matrix(dim_input, dim_priors); // 'B' matrix in the linear regression equation
 	VectorXf output(dim_input); // output 'xi dot' of regression equation
 
-	int i, j = 0, t, k, m = 0;
-	float f = 0; // denominator value of h(k)
+	int i =0;
+	int k= 0;
+//	float f = 0; // denominator value of h(k)
 
 
 	input_mean_matrix = Mean.block(0, 0, dim_input, dim_priors);
@@ -105,7 +106,8 @@ using namespace Eigen;
 
 //	long double output_array[dim_input];
 	long double *output_array;
-	output_array = (long double *)malloc(dim_input * 1 * sizeof(long double));
+//	output_array = (long double *)malloc(dim_input * 1 * sizeof(long double));
+	output_array=new long double [dim_input];
 
 	for(i=0; i< dim_input;i++)
 	{

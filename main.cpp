@@ -92,7 +92,6 @@ int main() {
 		long double *a = f_estimate(input, Mean, Sigma, Priors, Xistar);
 
 
-
 		// apply control input with the estimated f
 
 //		cout << "hi haha " << input << "again hi ha ha" << Xistar << endl;
@@ -123,6 +122,8 @@ int main() {
 
 //		output_array(i, 0) = a[0];
 //		output_array(i, 1) = a[1];
+		delete [] a;
+
 
 	}
 
