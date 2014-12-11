@@ -12,6 +12,6 @@
 
 using namespace Eigen;
 
-long double gausspdf(const VectorXf input, const VectorXf Mean,const MatrixXf Sigma); // input arguments are the query point, mean and the sigma
+ double gausspdf(const VectorXf input, const VectorXf Mean,const MatrixXf Sigma); // input arguments are the query point, mean and the sigma
 
 #endif /* GAUSSPDF_H_ */

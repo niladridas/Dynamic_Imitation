@@ -16,64 +16,51 @@
 
 using namespace Eigen;
 
-long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors, const VectorXf Xi_star)
+ long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf Sigma, const VectorXf Priors, const VectorXf Xi_star)
 {
 
 
-//	VectorXf input(2);
-//	input << 0.5, 0.2;
 
-//	VectorXf mean(2), mean_tmp(4);
-//	MatrixXf sigma(2,2);
-//
-//
-//    mean_tmp = Mean.col(0);
-//    mean << mean_tmp(0), mean_tmp(1);
-//    sigma = Sigma.block(0,0,2,2);
-
-//    long double a = gausspdf(input, mean,sigma);
+	// First calculate dimension of priors
+	int dim_priors = Priors.rows(); // priors comes as a rows
+	int dim_input = input.rows();
 
 
-
-	MatrixXf input_mean_matrix(2, 6); //   input  position(xi) mean vector for 6 gaussians
-	MatrixXf out_mean_matrix(2, 6); //   input velocity(xi dot) mean vector for 6 gaussians
-	MatrixXf Sigma_input(12, 2); //  extracted  sigma for input
-	MatrixXf Sigma_output_input(12, 2); //   extracted sigma sigmadot for input
-	MatrixXf Inverse_Sigma_input(12, 2); // inverse of the sigma matrix taking 6, 2x2 matrix
-	VectorXf p(6); //probability of input for 6 components
-	VectorXf h(6); // h value in the linear regression equation
-	MatrixXf A_matrix(12, 2); // 'A' matrix in the linear regression equation
-	MatrixXf B_matrix(2, 6); // 'B' matrix in the linear regression equation
-	VectorXf output(2, 1); // output 'xi dot' of regression equation
-
-
-
-
+	MatrixXf input_mean_matrix(dim_input, dim_priors); //   input  position(xi) mean vector for 6 gaussians
+	MatrixXf out_mean_matrix(dim_input, dim_priors); //
+	MatrixXf Sigma_input(dim_input*dim_priors, dim_input); //  extracted  sigma for input
+	MatrixXf Sigma_output_input(dim_input*dim_priors, dim_input); //   extracted sigma sigmadot for input
+	MatrixXf Inverse_Sigma_input(dim_input*dim_priors, dim_input); // inverse of the sigma matrix taking 6, 2x2 matrix
+	VectorXf p(dim_priors); //probability of input for 6 components
+	VectorXf h(dim_priors); // h value in the linear regression equation
+	MatrixXf A_matrix(dim_input*dim_priors, dim_input); // 'A' matrix in the linear regression equation
+	MatrixXf B_matrix(dim_input, dim_priors); // 'B' matrix in the linear regression equation
+	VectorXf output(dim_input); // output 'xi dot' of regression equation
 
 	int i, j = 0, t, k, m = 0;
 	float f = 0; // denominator value of h(k)
 
 
-	input_mean_matrix = Mean.block(0, 0, 2, 6);
-	out_mean_matrix   = Mean.block(2, 0, 2, 6);
+	input_mean_matrix = Mean.block(0, 0, dim_input, dim_priors);
+	out_mean_matrix   = Mean.block(dim_input, 0, dim_input, dim_priors);
 
 	//
 
-	for (i = 0; i < 6; i++) {
-		Sigma_input.block(2 * i, 0, 2, 2) = Sigma.block(4 * i, 0, 2, 2);
+	for (i = 0; i < dim_priors; i++) {
+		Sigma_input.block(dim_input * i, 0, dim_input, dim_input) = Sigma.block(2*dim_input* i, 0, dim_input, dim_input);
 	}
 
 
 	//
-	for (i = 0; i < 6; i++) {
-		Sigma_output_input.block(2 * i, 0, 2, 2) = Sigma.block(4 * i + 2, 0, 2, 2);
+	for (i = 0; i < dim_priors; i++) {
+		Sigma_output_input.block(dim_input * i, 0, dim_input, dim_input) = Sigma.block(2*dim_input* i + dim_input, 0, dim_input, dim_input);
 	}
 
     //
 
-	for (i = 0; i <= 10; i = i + 2) //inverse
+	for (i = 0; i < dim_input*dim_priors - dim_input ; i = i + dim_input) //inverse
 			{
-		Inverse_Sigma_input.block(i, 0, 2, 2) = Sigma_input.block(i, 0, 2, 2).inverse();
+		Inverse_Sigma_input.block(i, 0, dim_input, dim_input) = Sigma_input.block(i, 0, dim_input, dim_input).inverse();
 	}
 
 	//
@@ -82,10 +69,10 @@ long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf
 	long double prob_input = 0;
 
 	//float prob_input = input_probability(input,Mean1,Sigma1);
-	for (k = 0; k < 6; k++) {
-		long double prob_input_tmp = gausspdf(input, input_mean_matrix.col(k),
-				Sigma_input.block(2 * k, 0, 2, 2));
-		long double tmp_Pk = Priors(k) * prob_input_tmp;
+	for (k = 0; k < dim_priors; k++) {
+		 double prob_input_tmp = gausspdf(input, input_mean_matrix.col(k),
+				Sigma_input.block(dim_input * k, 0, dim_input, dim_input));
+		 double tmp_Pk = Priors(k) * prob_input_tmp;
 		p(k) = tmp_Pk;
 		prob_input = prob_input + tmp_Pk;
 
@@ -93,36 +80,37 @@ long double* f_estimate(const VectorXf input, const MatrixXf Mean,const MatrixXf
 
 
 
-	for (k = 0; k < 6; k++) {
-		long double h_k = p(k) / prob_input;
+	for (k = 0; k < dim_priors; k++) {
+		 double h_k = p(k) / prob_input;
 		h(k) = h_k;
 	}
 
-	for (k = 0; k <= 10; k = k + 2) {
-		A_matrix.block(k, 0, 2, 2) = Sigma_output_input.block(k, 0, 2, 2) * Inverse_Sigma_input.block(k, 0, 2, 2);
+	for (k = 0; k < dim_input*dim_priors - dim_input; k = k + dim_input) {
+		A_matrix.block(k, 0, dim_input, dim_input) = Sigma_output_input.block(k, 0, dim_input, dim_input) * Inverse_Sigma_input.block(k, 0, dim_input, dim_input);
 	}
 
-	for (k = 0; k < 6; k++) {
-		B_matrix.col(k) = out_mean_matrix.col(k) - A_matrix.block(2 * k, 0, 2, 2) * input_mean_matrix.col(k);
+	for (k = 0; k < dim_priors; k++) {
+		B_matrix.col(k) = out_mean_matrix.col(k) - A_matrix.block(dim_input * k, 0, dim_input, dim_input) * input_mean_matrix.col(k);
 	}
 
-	output << 0, 0;
+	output.Zero(dim_input,1);
 
-	for (k = 0; k < 6; k++) {
-		output = output + h(k) * (A_matrix.block(2 * k, 0, 2, 2) * input + B_matrix.col(k));
+	for (k = 0; k < dim_priors; k++) {
+		output = output + h(k) * (A_matrix.block(dim_input * k, 0, dim_input, dim_input) * input + B_matrix.col(k));
 
 	}
 
 
 
 
-	long double output_array[2];
-	output_array[0] = output(0);
-	output_array[1] = output(1);
-//	std::cout << "correycgjc" << std::endl;
+//	long double output_array[dim_input];
+	long double *output_array;
+	output_array = (long double *)malloc(dim_input * 1 * sizeof(long double));
 
-
-//	std::cout << "from inside   " << output_array[0] << std::endl;
+	for(i=0; i< dim_input;i++)
+	{
+		output_array[i] = output(i);
+	}
 
 	return output_array;
 }

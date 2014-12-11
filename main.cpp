@@ -14,11 +14,33 @@
 #include <cmath>
 #include <boost/math/constants/constants.hpp>
 #include <fstream>
+#include <stdlib.h>
+
+#define GNUPLOT "gnuplot -persist"
 
 using namespace Eigen;
 using namespace std;
 
 int main() {
+
+
+	// GNUPLOT Section
+	FILE *gp;
+	gp = popen(GNUPLOT, "w"); /* 'gp' is the pipe descriptor */
+	if (gp==NULL)
+	{
+		std::cout << "couldnot create pipe descriptor" << std::endl;
+		exit (EXIT_FAILURE);
+	}
+
+	FILE *gp1;
+		gp1 = popen(GNUPLOT, "w"); /* 'gp' is the pipe descriptor */
+		if (gp1==NULL)
+		{
+			std::cout << "couldnot create pipe descriptor" << std::endl;
+			exit (EXIT_FAILURE);
+		}
+
 
 
 	/*
@@ -58,6 +80,10 @@ int main() {
 	gradient_V gradient_obj;
 
 
+	fprintf(gp,"plot '-' using 1:2 \n");
+
+	fprintf(gp1,"plot '-' using 1:2 \n");
+
 
 	for (int i = 0; i < 88; i++) {
 		VectorXf input(2);
@@ -91,12 +117,18 @@ int main() {
 		output_array(i, 0) = final_f_estimate(0);
 		output_array(i, 1) = final_f_estimate(1);
 
+		fprintf(gp,"%f, %f\n",output_array(i, 0),output_array(i, 1));  // passing x,y data pairs one at a time to gnuplot
+		fprintf(gp1,"%f, %f\n",input_output_array(i, 2),input_output_array(i, 3));  // passing x,y data pairs one at a time to gnuplot
+
 
 //		output_array(i, 0) = a[0];
 //		output_array(i, 1) = a[1];
 
 	}
 
+	fclose(gp);
+
+		fclose(gp1);
 	std::ofstream file_output(
 			"/home/niladriisl/eclipse_workspace/Dynamic_Imitation/estimated_output.txt");
 	if (file_output.is_open()) {
@@ -105,6 +137,9 @@ int main() {
 
 	file_output.close();
 	std::cout << output_array << std::endl;
+
+
+
 
 	return 0;
 }
